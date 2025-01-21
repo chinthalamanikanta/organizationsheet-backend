@@ -8,6 +8,7 @@ import com.organizationchart.service.EmployeeService;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "https://maniorganizationsheet-dufjh2b8drcgh0hq.canadacentral-01.azurewebsites.net") 
 @RequestMapping("/api/employees")
 public class EmployeeController {
 
