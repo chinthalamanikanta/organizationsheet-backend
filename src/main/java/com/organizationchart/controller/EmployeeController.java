@@ -13,13 +13,13 @@ public class EmployeeController {
 
     @Autowired
     private EmployeeService employeeService;
-    
+
     // Create a new employee
     @PostMapping
     public ResponseEntity<Employee> createEmployee(@RequestBody Employee employee) {
         // Call the service method to create the employee
         Employee savedEmployee = employeeService.createEmployee(employee);
-        
+
         // Return the created employee with a 201 Created status
         return ResponseEntity.status(201).body(savedEmployee);
     }
@@ -46,7 +46,7 @@ public class EmployeeController {
     @GetMapping("/reporting-to/{empId}")
     public ResponseEntity<List<Employee>> getEmployeesReportingTo(@PathVariable Long empId) {
         List<Employee> reportingEmployees = employeeService.reportingToList(empId);
-        
+
         if (reportingEmployees.isEmpty()) {
             // Throw an exception if no employees are found
             throw new EmployeeNotFoundException("No employees found reporting to ID: " + empId);
@@ -59,7 +59,7 @@ public class EmployeeController {
     @GetMapping("/country/{country}")
     public ResponseEntity<List<Employee>> getByCountry(@PathVariable String country) {
         List<Employee> employees = employeeService.findByCountry(country);
-        
+
         if (employees.isEmpty()) {
             // Throw an exception if no employees are found
             throw new EmployeeNotFoundException("No employees found in country: " + country);
